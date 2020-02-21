@@ -1,0 +1,26 @@
+{
+  "apps": {
+      "name": "performancemonitor",                            
+      "script": "app.js",                      
+      "cwd": "./",                                
+      "args": "-i max",                                
+      "interpreter": "",                          
+      "interpreter_args": "",                     
+      "watch": true,                              
+      "ignore_watch": [                           
+          "node_modules",
+          "logs"
+      ],
+      "exec_mode": "cluster_mode",                
+      "instances": "max",                         
+      "max_memory_restart": "1024M",                    
+      "error_file": "logs/pm2-err.log",         
+      "out_file": "logs/pm2-out.log",       
+      "pid_file": "logs/pm2-pid.log",    
+      "merge_logs": true,                         
+      "log_date_format": "YYYY-MM-DD HH:mm:ss",   
+      "min_uptime": "60s",                                               
+      "autorestart": true,                        
+      "cron_restart": ""                              
+  }
+}
