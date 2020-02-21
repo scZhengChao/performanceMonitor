@@ -7,6 +7,7 @@
     var config = {
         webID: '',                  // 系统ID
         version: '1.0',             // 系统版本
+        dev: 'prd',                 // 默认prd（dev，stg）
         isSPA: true,                // 采集页面是否单页面，不传默认是true，传统页面必需传入
         checkVisible: false         // 页面可见开关(影响pv统计，页面时长统计)，不传默认是关闭
     };
@@ -150,8 +151,8 @@
     function commonProperty() {
         // 用于区分应用的唯一标识
         this.webId = config.webID
-        // 页面的url
-        // this.hrefUrl =  window.location.href
+        // 应用系统环境
+        this.dev =  config.dev
         // 日志发生时间戳
         this.happenedTime = new Date().getTime()
         // 页面唯一session，刷新后session会重置
