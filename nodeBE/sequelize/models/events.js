@@ -13,7 +13,7 @@ var events = defineModel('events',{
         comment:'设备ID或者登陆ID',
     },
     time:{
-        type:Sequelize.DATE(6),
+        type:Sequelize.DATE,
         comment:'事件发生时间',
     },
     type:{
@@ -26,7 +26,8 @@ var events = defineModel('events',{
     },
     project:{
         type:Sequelize.STRING(30),
-        comment:'项目名'
+        comment:'项目名',
+        
     },
     herf_url:{
         type:Sequelize.STRING(1024),
@@ -57,7 +58,8 @@ var events = defineModel('events',{
     },
     time_on_page:{
         type:Sequelize.INTEGER,
-        comment:'页面停留时间'
+        comment:'页面停留时间',
+        defaultValue:0,
     }
 },{
     comment: '事件表',

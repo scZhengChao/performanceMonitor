@@ -11,22 +11,27 @@ var users = defineModel('users', {
     is_login_id: {
         type: Sequelize.BOOLEAN,
         comment: '是否为登陆id',
+        defaultValue:false,
     },
     project: {
         type: Sequelize.STRING(30),
-        comment: '项目名'
+        comment: '项目名',
+        defaultValue:'monitor',
     },
     name: {
         type: Sequelize.STRING(30),
-        comment: '用户姓名'
+        comment: '用户姓名',
+        defaultValue:'no name',
     },
     province: {
         type: Sequelize.STRING(30),
-        comment: '省份'
+        comment: '省份',
+        defaultValue:'no province',
     },
     city: {
         type: Sequelize.STRING(30),
-        comment: '城市'
+        comment: '城市',
+        defaultValue:'no city',
     }
 }, {
     comment: '用户信息表',

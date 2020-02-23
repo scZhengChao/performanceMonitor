@@ -26,7 +26,7 @@ app.use(cors({
 
 // 按sdk vue 分 , 或者 按表分, 按增删改查 分 ...
 app.use('/jssdk',require('./routes/webjssdk'))
-app.use('/',require('./routes/index'))
+// app.use('/',require('./routes/index'))
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

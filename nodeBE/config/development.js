@@ -5,7 +5,7 @@ var config = {
     env: 'development', //环境名称
     port: 3000,         //服务端口号
     mysqlConfig: {
-        host: "localhost",
+        host: "127.0.0.1",
         dialect:"mysql",
         port: '3306',       //  接数据库的端口
         protocol: 'tcp',    //  连接数据库使用的协议

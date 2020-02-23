@@ -1,15 +1,16 @@
 let userLogs = require('../../sequelize/relation').users
 let customersinfo = (req,res,next)=>{
     let data = JSON.parse(req.body.data).userInfo
+    console.log(data)
     userLogs.create({
-        userName:data.userName,
-        age:data.age,
-        paMonitorCustomerUniqueKey:data.paMonitorCustomerUniqueKey,
+        name:data.name,
+        id:data.id,
     }).then(results=>{
-        res.send({err:0,msg:results})
+        res.send({code:100001,msg:results})
     }).catch(err=>{
         console.log('err user:',err)
-        res.send({err:1,msg:err})
+        logger.error(error)
+        res.send({code:1,msg:err})
     })
  
     
