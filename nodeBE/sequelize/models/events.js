@@ -28,7 +28,15 @@ var events = defineModel('events',{
         type:Sequelize.STRING(30),
         comment:'项目名'
     },
-    herf_url:{
+    project_env:{
+        type:Sequelize.STRING(10),
+        comment:'应用环境'
+    },
+    page_session:{
+        type:Sequelize.STRING(25),
+        comment:'页面session'
+    }, 
+    href_url:{
         type:Sequelize.STRING(1024),
         comment:'页面URL',
         validate:{
@@ -55,7 +63,7 @@ var events = defineModel('events',{
         type:Sequelize.STRING(30),
         comment:'浏览器版本'
     },
-    time_on_page:{
+    on_page_time:{
         type:Sequelize.INTEGER,
         comment:'页面停留时间'
     }

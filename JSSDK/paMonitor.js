@@ -5,7 +5,7 @@
 (function(window){
     // 接入的业务系统配置
     var config = {
-        webID: '',                  // 系统ID
+        project: '',                // 系统ID
         version: '1.0',             // 系统版本
         dev: 'prd',                 // 默认prd（dev，stg）
         isSPA: true,                // 采集页面是否单页面，不传默认是true，传统页面必需传入
@@ -60,13 +60,13 @@
     PAUtils.prototype.getCustomerUnqKey = function () {   
         if (!monitorCustomerUnqKey) {
             var customerKey = this.getUid()
-            var userInfo = {userName: customerKey}
+            var userInfo = {id: customerKey}
             // 发送用户信息到服务端
             paUtls.ajax(monitorServerCustomerInfo, true, {userInfo: userInfo}, function(res){
                 // 成功回调
                 if (res.code == '100001'){
                     console.log('JSSDK OUTPUT: user information send successed')
-                    localStorage['paMonitorCustomerUniqueKey'] = userInfo.userName
+                    localStorage['paMonitorCustomerUniqueKey'] = customerKey
                 }               
             }, function(){
                 console.log('JSSDK OUTPUT: user information send failed')
@@ -83,7 +83,7 @@
             // 成功回调
             if (res.code == '100001'){
                 console.log('JSSDK OUTPUT: user information send successed')
-                localStorage['paMonitorCustomerUniqueKey'] = userInfo.userName
+                localStorage['paMonitorCustomerUniqueKey'] = userInfo.id
             }               
         }, function(){
             console.log('JSSDK OUTPUT: user information send failed')
@@ -99,14 +99,14 @@
             var agent = navigator.userAgent.toLowerCase()
             var regStr_ie = /msie [\d.]+;/gi
             var regStr_chrome = /chrome\/[\d.]+/gi
-            device.browserName = '未知'
-            //IE
+            device.browserName = 'Unknown'
+            // IE
             if(agent.indexOf("msie") > 0) {
                 var browserInfo = agent.match(regStr_ie)[0]
                 device.browserName = browserInfo.split('/')[0]
                 device.browserVersion = browserInfo.split('/')[1]
             }
-            //Chrome
+            // Chrome
             if(agent.indexOf("chrome") > 0) {
                 var browserInfo = agent.match(regStr_chrome)[0]
                 device.browserName = browserInfo.split('/')[0]
@@ -150,27 +150,29 @@
     // 设置日志对象类的通用属性
     function commonProperty() {
         // 用于区分应用的唯一标识
-        this.webId = config.webID
+        this.project = config.project
+        // SDK版本
+        this.sdk_version = config.version
         // 应用系统环境
-        this.dev =  config.dev
+        this.project_env =  config.dev
         // 日志发生时间戳
-        this.happenedTime = new Date().getTime()
+        this.time = new Date().getTime()
         // 页面唯一session，刷新后session会重置
-        this.pageSession = pageSession
+        this.page_session = pageSession
         // UV信息,客户唯一标识
-        this.customerUnqKey = paUtls.getCustomerUnqKey()
+        this.distinct_id = paUtls.getCustomerUnqKey()
     };
     // PV构造函数
     function PVFunc(uploadType, pageEvent, onPageTime) {
         commonProperty.apply(this)
-        this.hrefUrl =  locationPathname
-        this.pageEvent = pageEvent
-        this.onPageTime = onPageTime
+        this.href_url =  locationPathname
+        this.event = pageEvent
+        this.on_page_time = onPageTime
         var deviceInfo = paUtls.getDeviceInfo()
-        this.uploadType = uploadType
-        this.deviceName = deviceInfo.deviceName
-        this.browserName = deviceInfo.browserName
-        this.browserVersion = deviceInfo.browserVersion
+        this.upload_type = uploadType
+        this.device_name = deviceInfo.deviceName
+        this.browser_name = deviceInfo.browserName
+        this.browser_version = deviceInfo.browserVersion
     };
     PVFunc.prototype.handle = function() {
         var tempString = localStorage[this.uploadType] ? localStorage[this.uploadType] : ""
@@ -340,7 +342,7 @@
     // paMonitor & paUtils暴露给业务系统，挂载到window对象
     // 在业务系统内调用paMonitor.init
     window.paMonitor = new PaMonitor();
-    // 在业务系统内调用paUtils.getCustomerInfo({userName:'WUYANZU001', age: 30})
+    // 在业务系统内调用paUtils.getCustomerInfo({id:'WUYANZU001', is_login_id: 1})
     window.paUtils = new PAUtils();
 
 })(window);

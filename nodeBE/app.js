@@ -23,11 +23,12 @@ app.use(cors({
   credentials: true
 }))
 
-
 // 按sdk vue 分 , 或者 按表分, 按增删改查 分 ...
 app.use('/jssdk',require('./routes/webjssdk'))
 app.use('/',require('./routes/index'))
 
+// 静态文件托管
+app.use('/static', express.static('public'))
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   res.status(404).json({
