@@ -1,6 +1,4 @@
 //批量同步表结构  
-
-
 var seq = require('./index.js');
 var fs = require('fs');
 var files = fs.readdirSync(__dirname + '/models');
