@@ -3,15 +3,17 @@ const path = require('path')
 // 开发环境需要修改次地址
 var config = {
     env: 'test', //环境名称
-    port: 3000,         //服务端口号
+    port: 3000,   //服务端口号
+    databaseName:"Incscc" , 
+    databaseUser:'Incsccopr',
     mysqlConfig: {
-        host: "127.0.0.1",
+        host: "30.69.0.25",
         dialect:"mysql",
-        port: '3306',       //  接数据库的端口
+        port: '4186',       //  接数据库的端口
         protocol: 'tcp',    //  连接数据库使用的协议
         pool: {
-            max: 50,       //连接池上线
-            min: 10,          //连接池下线
+            max: 20,       //连接池上线
+            min: 1,          //连接池下线
             acquire: 10000,     //请求超时时间  10s
             idle: 30000          //断开连接后，连接实例在连接池保持的时间 30s 
         },
@@ -33,6 +35,14 @@ var config = {
             timestamps: false,
             paranoid: false,  // 增加了deleteAt
         },
+    },
+    Cyback:{
+        appId:'App_LNCS_CC_8a7911',
+        appkey:'5697043956793868',
+        folder:'root',
+        object:'MYSQL_TOMYLNCSCC_Incscc_Incsccopr',
+        safe:"AIM_LNCS_CC",
+        reason:'password'
     },
     accessLogOutputPath: path.join(__dirname, '../', 'logs'),  //服务日志
     appInfoLogOutputPath: path.join(__dirname, '../', 'logs/info'),  //应用 info 级别 日志地址

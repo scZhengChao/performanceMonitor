@@ -4,7 +4,6 @@ const express = require('express');
 const cors = require('cors')
 const path = require('path')
 let history = require('connect-history-api-fallback')
-
 // 全局的util 无需 手写引入
 let util = require('./util')
 Object.entries(util).forEach(item=>global[item[0]] = item[1])
@@ -23,9 +22,15 @@ app.use(cors({
   credentials: true
 }))
 
+//初始化数据库
+var sequelize = require('./sequelize/index')
+
+
+  
 // 按sdk vue 分 , 或者 按表分, 按增删改查 分 ...
 app.use('/jssdk',require('./routes/webjssdk'))
 // app.use('/',require('./routes/index'))
+
 
 
 // 静态文件托管

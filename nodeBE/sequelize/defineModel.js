@@ -1,7 +1,7 @@
 // 自定义规范 model 
 let Sequelize = require('sequelize')
-let seq = require('./index')
-
+let seqPro = require('./index')
+console.log(seqPro)
 let  defineModel = function (name, attributes,config={}) {
     var attrs = {};
     for (let key in attributes) {  //全部转换成对象模式
@@ -22,6 +22,8 @@ let  defineModel = function (name, attributes,config={}) {
     
     }
     conf = Object.assign({},defaultConfig,config)
-    return seq.define(name, attrs, conf);
+    return seqPro.then((seq)=>{
+        seq.define(name, attrs, conf);
+    })
 };
 module.exports = defineModel

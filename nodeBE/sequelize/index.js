@@ -1,19 +1,34 @@
 let Sequelize  = require('sequelize')
-
+let config = require('../config')
+let cbForPassword = require('../util/Cyback')
 // 数据库配置文件
-var sqlConfig = require('../config').mysqlConfig
+var sqlConfig = config.mysqlConfig
 
 console.log('init sequelize...');
 console.log(`mysql:pamonitor;env:${process.env.NODE_ENV};host:${sqlConfig.host};port:${sqlConfig.port}`);
 
 //Sequelize会在初始化时设置一个连接池，这样你应该为每个数据库创建一个实例：
-var seq = new Sequelize('pamonitor', 'root','123456' , sqlConfig);
-seq
-    .authenticate()
-    .then(() => {
-        console.log('Connection has been established successfully.');
-    })
-    .catch(err => {
-        console.error('Unable to connect to the database:', err.message);
-    });
-module.exports = seq
+let password ;
+let seq;
+module.exports = process.env.NODE_ENV ==='development'?getDatabasePassword('123456'): getDatabasePassword()
+async function getDatabasePassword(pw){
+    if(pw){
+        password = pw
+    }else{
+        console.log(password,'111')
+        password =   await cbForPassword.databaseToCyback().then(res=>{
+            console.log('password:',res)
+        })
+        seq = new Sequelize(config.databaseName, config.databaseUser,password, sqlConfig);
+        seq
+           .authenticate()
+           .then(() => {
+               console.log('Connection has been established successfully.');
+           })
+           .catch(err => {
+               console.error('Unable to connect to the database:', err.message);
+           });
+        return seq  
+    }
+}
+
