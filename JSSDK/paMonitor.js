@@ -60,13 +60,14 @@
     PAUtils.prototype.getCustomerUnqKey = function () {   
         if (!monitorCustomerUnqKey) {
             var customerKey = this.getUid()
-            var userInfo = {id: customerKey}
+            var userInfo = {id: customerKey, is_login_id: false}
             // 发送用户信息到服务端
             paUtls.ajax(monitorServerCustomerInfo, true, {userInfo: userInfo}, function(res){
                 // 成功回调
                 if (res.code == '100001'){
                     console.log('JSSDK OUTPUT: user information send successed')
                     localStorage['paMonitorCustomerUniqueKey'] = customerKey
+                    monitorCustomerUnqKey = customerKey
                 }               
             }, function(){
                 console.log('JSSDK OUTPUT: user information send failed')
@@ -79,11 +80,12 @@
      */
     PAUtils.prototype.getCustomerInfo = function(userInfo) {
         // 发送用户信息到服务端
-        paUtls.ajax(monitorServerCustomerInfo, true, {userInfo: userInfo}, function(res){
+        paUtls.ajax(monitorServerCustomerInfo, true, {userInfo: Object.assign(userInfo, {is_login_id: true})}, function(res){
             // 成功回调
             if (res.code == '100001'){
                 console.log('JSSDK OUTPUT: user information send successed')
                 localStorage['paMonitorCustomerUniqueKey'] = userInfo.id
+                monitorCustomerUnqKey = userInfo.id
             }               
         }, function(){
             console.log('JSSDK OUTPUT: user information send failed')
