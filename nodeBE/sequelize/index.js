@@ -10,6 +10,7 @@ console.log(`mysql:pamonitor;env:${process.env.NODE_ENV};host:${sqlConfig.host};
 //Sequelize会在初始化时设置一个连接池，这样你应该为每个数据库创建一个实例：
 let password ;
 let seq;
+
 module.exports = process.env.NODE_ENV ==='development'?getDatabasePassword('123456'): getDatabasePassword()
 async function getDatabasePassword(pw){
     if(pw){
