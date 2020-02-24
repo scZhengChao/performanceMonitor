@@ -13,7 +13,8 @@ for (var f of js_files) {
     module.exports[name] = require(__dirname + '/models/' + f);
 }
 seq.sync({
-    force: true  // 强制同步，先删除表，然后新建
+    force: true,  // 强制同步，先删除表，然后新建
+    // alter: true //如果表已存在，不过丢弃，如果不存在会直接创建表
 }).then(()=>{
     console.log('init db ok')
 }).catch(err=>{
