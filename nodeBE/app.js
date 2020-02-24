@@ -22,14 +22,18 @@ app.use(cors({
   credentials: true
 }))
 
+
 //初始化数据库
 var sequelize = require('./sequelize/index')
-
+sequelize.then(res=>{
+    global.seq = res
+    // 按sdk vue 分 , 或者 按表分, 按增删改查 分 ...
+    app.use('/jssdk',require('./routes/webjssdk'))
+    // app.use('/',require('./routes/index'))
+})
 
   
-// 按sdk vue 分 , 或者 按表分, 按增删改查 分 ...
-app.use('/jssdk',require('./routes/webjssdk'))
-// app.use('/',require('./routes/index'))
+
 
 
 

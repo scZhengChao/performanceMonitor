@@ -10,6 +10,7 @@ function responseClient(res, info={}, httpCode = 200, code = "000000", message =
     responseData.data = info; 
     res.status(httpCode).json(responseData);
 }
+
 module.exports = {
     responseClient,logger,morgan4acc
 }

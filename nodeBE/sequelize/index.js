@@ -16,20 +16,21 @@ async function getDatabasePassword(pw){
     if(pw){
         password = pw
     }else{
-        console.log(password,'111')
-        password =   await cbForPassword.databaseToCyback().then(res=>{
+        await cbForPassword.databaseToCyback().then(res=>{
             console.log('password:',res)
+            password = res
         })
-        seq = new Sequelize(config.databaseName, config.databaseUser,password, sqlConfig);
-        seq
-           .authenticate()
-           .then(() => {
-               console.log('Connection has been established successfully.');
-           })
-           .catch(err => {
-               console.error('Unable to connect to the database:', err.message);
-           });
-        return seq  
     }
+    seq = new Sequelize(config.databaseName, config.databaseUser,password, sqlConfig);
+    return seq
+        .authenticate()
+        .then((result) => {
+            console.log('Connection has been established successfully.');
+            return seq
+        })
+        .catch(err => {
+            console.error('Unable to connect to the database:', err.message);
+        });
+    
 }
 

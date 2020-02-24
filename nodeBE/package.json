@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": " set NODE_ENV=test&&nodemon app.js",
+    "dev": " set NODE_ENV=development&&nodemon app.js",
     "test": " set NODE_ENV=test&&pm2 start pm2.config.json",
     "prd": "set NODE_ENV=production&&pm2 start pm2.config.json"
   },
