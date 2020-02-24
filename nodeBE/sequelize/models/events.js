@@ -39,7 +39,7 @@ var events = defineModel('events',{
         defaultValue:'',
     },
     page_session:{
-        type:Sequelize.STRING(25),
+        type:Sequelize.STRING(32),
         comment:'页面session',
         defaultValue:'',
     }, 
