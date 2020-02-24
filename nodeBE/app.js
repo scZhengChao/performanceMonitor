@@ -27,6 +27,7 @@ app.use(cors({
 app.use('/jssdk',require('./routes/webjssdk'))
 // app.use('/',require('./routes/index'))
 
+
 // 静态文件托管
 app.use('/static', express.static('public'))
 // catch 404 and forward to error handler

@@ -1,32 +1,4 @@
 let sqlLogs = require('../../sequelize/relation').events
-// [
-//     {
-//       webId: 'zhengchao',
-//       happenedTime: 1582274897322,
-//       pageSession: '5dteyq2zokx-1582274784845',
-//       customerUnqKey: 'zm3c0ehujze-1581146664209',
-//       hrefUrl: 'http://localhost:8080/#/',
-//       pageEvent: 'page_beforeunload',
-//       onPageTime: 111176,
-//       uploadType: 'PV',
-//       deviceName: 'PC',
-//       browserName: 'chrome',
-//       browserVersion: '80.0.3987.87'
-//     },
-//     {
-//       webId: 'zhengchao',
-//       happenedTime: 1582274899150,
-//       pageSession: 'wvs3w2i5ilh-1582274897734',
-//       customerUnqKey: 'zm3c0ehujze-1581146664209',
-//       hrefUrl: 'http://localhost:8080/#/',
-//       pageEvent: 'page_load',
-//       uploadType: 'PV',
-//       deviceName: 'PC',
-//       browserName: 'chrome',
-//       browserVersion: '80.0.3987.87'
-//     }
-//   ]
-  
 let logs = (req,res,next)=>{
     let data = JSON.parse(req.body.data).logInfo.split('$$$')
     data.pop()

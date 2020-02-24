@@ -17,7 +17,7 @@ var config = {
         },
         omitNull: false,    //  null 是否通过SQL语句查询
         timezone: '+08:00',  //  解决时差 - 默认存储时间存在8小时误差
-        logging:true, // 输出日志信息  开发测试可以用一用
+        logging:false, // 输出日志信息  开发测试可以用一用
         //Changing the default model options  数据库默认参数,全局参数
         define: {
             // 不使用驼峰式命令规则，这样会在使用下划线分隔
@@ -39,6 +39,3 @@ var config = {
     appErrorLogOutputPath: path.join(__dirname, '../', 'logs/error') ,    //应用 error 级别 日志地址
 };
  module.exports=config;
-
- 1000/200*50   250/s
- 50*10000/(2*25-1*50)
