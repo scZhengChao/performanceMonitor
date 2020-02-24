@@ -4,7 +4,7 @@ const path = require('path')
 var config = {
     env: 'development', //环境名称
     port: 3000,         //服务端口号
-    databaseName:"pamonitor" , 
+    databaseName:"lalala" ,
     databaseUser:'root',
     mysqlConfig: {
         host: "127.0.0.1",

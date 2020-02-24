@@ -1,5 +1,4 @@
-let sqlLogs = require('../../sequelize/relation').events
-let logs = (req,res,next)=>{
+module.exports = async function (req,res,next) {
     let data = JSON.parse(req.body.data).logInfo.split('$$$')
     data.pop()
     let arr = data.map(item=>JSON.parse(item))
@@ -22,13 +21,11 @@ let logs = (req,res,next)=>{
             project_env:item.project_env
         })
     });
+    let sqlLogs = await require('../../sequelize/relation').events
     sqlLogs.bulkCreate(seqarr).then(results=>{
         res.send({code:100001,msg:'success'})
     }).catch(err=>{
         // console.log('err logs:',err)
         res.send({code:100000,msg:err})
     })
-   
-
 }
-module.exports = logs
