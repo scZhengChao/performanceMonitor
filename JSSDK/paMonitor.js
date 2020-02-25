@@ -14,9 +14,9 @@
 
     var windowUnloadFlg = false;    // 刷新关闭页面时，触发了visibilitychange，但不存localstorage
     // 日志上报接口地址
-    var monitorServerLogs = 'http://localhost:3008/jssdk/logs';
+    var monitorServerLogs = 'http://lncs-cc-maidian-wgq-stg1-web-padis.paic.com.cn/api/jssdk/logs';
     // 上报客户信息接口地址
-    var monitorServerCustomerInfo = 'http://localhost:3008/jssdk/customersinfo';
+    var monitorServerCustomerInfo = 'http://lncs-cc-maidian-wgq-stg1-web-padis.paic.com.cn/api/jssdk/customersinfo';
 
     var timeOnPage = ''                    // 页面停留时长
     ,totalNotOnPageTime = ''               // 累计页面不活跃(页面最小化，页面被tab掉...)时长
