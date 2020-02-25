@@ -62,7 +62,7 @@
             var customerKey = this.getUid()
             var userInfo = {id: customerKey, is_login_id: false}
             // 发送用户信息到服务端
-            paUtls.ajax(monitorServerCustomerInfo, true, {userInfo: userInfo}, function(res){
+            paUtls.ajax(monitorServerCustomerInfo, false, {userInfo: userInfo}, function(res){
                 // 成功回调
                 if (res.code == '100001'){
                     console.log('JSSDK OUTPUT: user information send successed')
@@ -73,7 +73,7 @@
                 console.log('JSSDK OUTPUT: user information send failed')
             })
         }
-        return monitorCustomerUnqKey
+        return localStorage['paMonitorCustomerUniqueKey']
     };
     /**
      * 当应用系统调用此方法

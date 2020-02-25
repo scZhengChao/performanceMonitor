@@ -369,3 +369,5 @@
 ::1 - - [2020-2-24 11:11:26] "POST /jssdk/logs HTTP/1.1" - 200 31 "http://localhost:8080/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.87 Safari/537.36"
 ::1 - - [2020-2-24 11:23:26] "POST /jssdk/logs HTTP/1.1" - 200 31 "http://localhost:8080/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.87 Safari/537.36"
 ::1 - - [2020-2-24 14:12:35] "POST /jssdk/logs HTTP/1.1" - 200 31 "http://localhost:8080/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.87 Safari/537.36"
+::1 - - [2020-2-25 9:15:30] "POST /jssdk/customersinfo HTTP/1.1" - 404 32 "http://localhost:8080/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.87 Safari/537.36"
+::1 - - [2020-2-25 9:16:00] "POST /jssdk/logs HTTP/1.1" - 404 32 "http://localhost:8080/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.87 Safari/537.36"
