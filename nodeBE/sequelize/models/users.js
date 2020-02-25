@@ -1,42 +1,43 @@
-var Sequelize = require('sequelize');
+const Sequelize = require('sequelize')
+const modelGenerator = require('../defineModel')
 
-module.exports = {
-    name: 'users',
-    attributes: {
-        id: {
-            type: Sequelize.STRING(64),
-            comment: '设备ID或登陆ID',
-            primaryKey: true,
-            unique: true
-        },
-        is_login_id: {
-            type: Sequelize.BOOLEAN,
-            comment: '是否为登陆id',
-            defaultValue:false,
-        },
-        project: {
-            type: Sequelize.STRING(30),
-            comment: '项目名',
-            defaultValue:'monitor',
-        },
-        name: {
-            type: Sequelize.STRING(30),
-            comment: '用户姓名',
-            defaultValue:'no name',
-        },
-        province: {
-            type: Sequelize.STRING(30),
-            comment: '省份',
-            defaultValue:'no province',
-        },
-        city: {
-            type: Sequelize.STRING(30),
-            comment: '城市',
-            defaultValue:'no city',
-        }
+module.exports = modelGenerator(
+  'users',
+  {
+    id: {
+      type: Sequelize.STRING(64),
+      comment: '设备ID或登陆ID',
+      primaryKey: true,
+      unique: true
     },
-    comment: '用户信息表',
-}
+    is_login_id: {
+      type: Sequelize.BOOLEAN,
+      comment: '是否为登陆id',
+      defaultValue: false,
+    },
+    project: {
+      type: Sequelize.STRING(30),
+      comment: '项目名',
+      defaultValue: 'monitor',
+    },
+    name: {
+      type: Sequelize.STRING(30),
+      comment: '用户姓名',
+      defaultValue: 'no name',
+    },
+    province: {
+      type: Sequelize.STRING(30),
+      comment: '省份',
+      defaultValue: 'no province',
+    },
+    city: {
+      type: Sequelize.STRING(30),
+      comment: '城市',
+      defaultValue: 'no city',
+    }
+  },
+  '用户信息表'
+)
 
 // CREATE TABLE `users` (
 //     `id` varchar(64) NOT NULL COMMENT '设备ID或登陆ID',
