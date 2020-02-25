@@ -24,7 +24,6 @@ async function getDatabasePassword(pw){
            .catch(err => {
                console.error('Unable to connect to the database:', err.message);
            });
-        console.log('1111111', seq)
         return seq  
     }
 }

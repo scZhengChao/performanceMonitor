@@ -26,7 +26,6 @@ let  defineModel = async function (name, attributes,config={}) {
     //     seq.define(name, attrs, conf);
     // })
     let seq = await require('./index')()
-    console.log('22222', seq)
     return seq.define(name, attrs, conf)
 };
 

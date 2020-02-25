@@ -1,10 +1,9 @@
 var Sequelize = require('sequelize');
 
 var usersGenerator = async function () {
-    console.log('models')
-    var defineModel = await require('../defineModel')();
+    var defineModel = await require('../defineModel');
     console.log('models', defineModel)
-    return defineModel('users', {
+    var model = defineModel('users', {
         id: {
             type: Sequelize.STRING(64),
             comment: '设备ID或登陆ID',
@@ -39,6 +38,8 @@ var usersGenerator = async function () {
     }, {
         comment: '用户信息表',
     });
+    console.log('model123',model)
+    return model
 }
 
 module.exports = usersGenerator;
