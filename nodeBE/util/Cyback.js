@@ -23,7 +23,7 @@ let databaseToCybackData = {
     reason:Cyback.reason
 }
 console.log(`Cyback params:`,databaseToCybackData)
-function databaseToCyback(){
+async function databaseToCyback(){
     return  fetch({
         url:"https://test-ccp.paic.com.cn/pidms/rest/pwd/getPassword",
         method:'post' ,
