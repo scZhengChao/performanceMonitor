@@ -26,10 +26,17 @@ async function getDatabasePassword(pw){
         .authenticate()
         .then((result) => {
             console.log('Connection has been established successfully.');
-            return seq
+            return {
+                code:'success',
+                data:seq
+            }
         })
         .catch(err => {
             console.error('Unable to connect to the database:', err.message);
+            return {
+                code:'failed',
+                data:err
+            }
         });
     
 }

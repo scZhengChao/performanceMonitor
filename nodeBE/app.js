@@ -27,38 +27,44 @@ app.use(cors({
 var sequelize = require('./sequelize/index')
 sequelize.then(res=>{
     global.seq = res
-    // 按sdk vue 分 , 或者 按表分, 按增删改查 分 ...
-    app.use('/jssdk',require('./routes/webjssdk'))
-    // app.use('/',require('./routes/index'))
+    console.log(`数据库连接:${res.code}`)
+    if(res.code === 'success')  global.seq = res.data
+    middle_ware()
+
 })
 
-  
+function middle_ware(){
+   // 按sdk vue 分 , 或者 按表分, 按增删改查 分 ...
+   app.use('/jssdk',require('./routes/webjssdk'))
+   // app.use('/',require('./routes/index'))
+
+   // 静态文件托管
+   app.use('/static', express.static('public'))
+   // catch 404 and forward to error handler
+   app.use(function(req, res, next) {
+       res.status(404).json({
+           message:'找不到此接口'
+       })
+   });
+
+   // error handler
+   app.use(function(err, req, res, next) {
+       console.log(err,'err middleware 捕捉')
+       if(err){
+           let {message,stack} = err
+           res.status(500).json({
+               message,
+               stack
+           })
+       }else{
+           next()
+       }
+   });
+}
 
 
 
 
-// 静态文件托管
-app.use('/static', express.static('public'))
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  res.status(404).json({
-    message:'找不到此接口'
-  })
-});
-
-// error handler
-app.use(function(err, req, res, next) {
-  console.log(err,'err middleware 捕捉')
-  if(err){
-    let {message,stack} = err
-    res.status(500).json({
-      message,
-      stack
-    })
-  }else{
-      next()
-  }
-});
 
 let server = app.listen(3000,()=>{
   console.log('server running at http://localhost:3000  '+ process.env.NODE_ENV)
