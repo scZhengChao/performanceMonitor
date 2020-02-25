@@ -1,7 +1,7 @@
-let userLogs = require('../../sequelize/relation').users
-let customersinfo = (req, res, next) => {
+const users = require('../../sequelize/relation').users
+module.exports = (req, res, next) => {
   let data = JSON.parse(req.body.data).userInfo
-  userLogs.findOrCreate({
+  users.findOrCreate({
     where: {
       id: data.id
     },
@@ -22,4 +22,3 @@ let customersinfo = (req, res, next) => {
     res.send({ code: 1, msg: err })
   })
 }
-module.exports = customersinfo
