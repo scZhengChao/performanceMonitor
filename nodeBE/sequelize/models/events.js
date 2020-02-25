@@ -1,8 +1,8 @@
 var Sequelize = require('sequelize');
 
-var eventsGenerator = async function (){
-    var defineModel = await require('../defineModel');
-    defineModel('eventsGenerator',{
+module.exports = {
+    name: 'eventsGenerator',
+    attributes: {
         id:{
             type: Sequelize.BIGINT,
             autoIncrement:true,
@@ -82,11 +82,9 @@ var eventsGenerator = async function (){
             comment:'页面停留时间',
             defaultValue:0,
         }
-    },{
-        comment: '事件表',
-    });
+    },
+    comment: '事件表'
 }
-module.exports = eventsGenerator;
 
 // CREATE TABLE `events` (
 //     `id` bigint NOT NULL AUTO_INCREMENT,

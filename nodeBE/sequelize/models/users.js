@@ -1,7 +1,8 @@
 var Sequelize = require('sequelize');
 
-var usersGenerator = async function () {
-    var model = await require('../defineModel')('users', {
+module.exports = {
+    name: 'users',
+    attributes: {
         id: {
             type: Sequelize.STRING(64),
             comment: '设备ID或登陆ID',
@@ -33,14 +34,9 @@ var usersGenerator = async function () {
             comment: '城市',
             defaultValue:'no city',
         }
-    }, {
-        comment: '用户信息表',
-    })
-    console.log('model123',model)
-    return model
+    },
+    comment: '用户信息表',
 }
-
-module.exports = usersGenerator;
 
 // CREATE TABLE `users` (
 //     `id` varchar(64) NOT NULL COMMENT '设备ID或登陆ID',
