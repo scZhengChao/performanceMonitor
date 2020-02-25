@@ -26,7 +26,6 @@ app.use(cors({
 //初始化数据库
 var sequelize = require('./sequelize/index')
 sequelize.then(res=>{
-    global.seq = res
     console.log(`数据库连接:${res.code}`)
     if(res.code === 'success')  global.seq = res.data
     middle_ware()
