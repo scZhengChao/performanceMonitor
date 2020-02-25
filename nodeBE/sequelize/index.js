@@ -23,7 +23,6 @@ async function getDatabasePassword(pw){
            .catch(err => {
                console.error('Unable to connect to the database:', err.message);
            });
-        console.log('seqModel')
         return seqModel
     }
 }
