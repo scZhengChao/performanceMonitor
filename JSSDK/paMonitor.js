@@ -52,7 +52,13 @@
      */
     PAUtils.prototype.getUid = function() {
         var timeStamp = new Date().getTime()
-        return Math.random().toString(36).substring(2) + '-' + timeStamp;
+        //默认去掉了容易混淆的字符oOLl,9gq,Vv,Uu,I1
+        var chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678';
+        var tempLen = chars.length, tempStr='';
+        for(var i=0; i<18; ++i){
+            tempStr += chars.charAt(Math.floor(Math.random() * tempLen ));
+        }
+        return tempStr + '-' + timeStamp;
     };
     /**
      * 获取用户的唯一标识(UV)
