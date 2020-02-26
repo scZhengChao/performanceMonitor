@@ -183,7 +183,7 @@
         this.browser_version = deviceInfo.browserVersion
     };
     PVFunc.prototype.handle = function() {
-        var tempString = localStorage[this.uploadType] ? localStorage[this.uploadType] : ""
+        var tempString = localStorage[this.upload_type] ? localStorage[this.upload_type] : ""
         localStorage['PV'] = tempString + JSON.stringify(this) + '$$$'
     };
 
