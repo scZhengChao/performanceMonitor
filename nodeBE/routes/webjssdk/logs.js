@@ -17,7 +17,7 @@ module.exports = function (req, res, next) {
       sdk_version: item.sdk_version,
       browser_name: item.browser_name,
       browser_version: item.browser_version,
-      time_on_page: item.time_on_page,
+      on_page_time: item.on_page_time,
       page_session: item.page_session,
       project_env: item.project_env
     })
